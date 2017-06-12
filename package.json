@@ -1,0 +1,19 @@
+{
+  "name": "integrate2017",
+  "version": "1.0.0",
+  "description": "",
+  "dependencies": {
+    "azure-iot-common": "^1.1.7",
+    "azure-iot-device": "^1.1.11",
+    "azure-iot-device-amqp": "^1.1.11",
+    "azure-iot-device-mqtt": "^1.1.11",
+    "azure-iothub": "^1.1.10",
+    "colors": "^1.1.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
