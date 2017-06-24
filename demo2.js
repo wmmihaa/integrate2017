@@ -29,6 +29,7 @@ client.open(function (err) {
             }
             else {
                 console.log("Device twin is ready".green);
+                
                 twin.on('properties.desired', function (desiredState) {
 
                     console.log("Received desired state : ".green + JSON.stringify(desiredState));

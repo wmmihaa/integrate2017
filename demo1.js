@@ -25,7 +25,6 @@ client.open(function (err) {
         thermometer.start(1000, function (reading) {
             var json = JSON.stringify(reading);
             var message = new Message(json);
-            message.properties.add("TEST", "Mikael");
             console.log("Sending event: ".green + "Temerature: ".grey + reading.temperature);
             client.sendEvent(message, function (err) {
                 if (err) {
@@ -33,13 +32,9 @@ client.open(function (err) {
                 }
             });
         });
-
-        client.on('message', function (msg) {
-            console.log('Received Notification: WARNING'.yellow);
-            //client.complete(msg, function (err) {});
-        });
         client.on('error', function (err) {
             console.error(err.message.red);
         });
+        
     }
 });
