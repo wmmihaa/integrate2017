@@ -7,10 +7,10 @@ var settings = require('./lib/settings');
 var Thermometer = require('iot-simlators').Thermometer;
 var thermometer = new Thermometer();
 
-var Protocol = require('azure-iot-device-mqtt').Mqtt;
-//var Protocol = require('azure-iot-device-amqp').Amqp;
 var Client = require('azure-iot-device').Client;
 var Message = require('azure-iot-device').Message;
+var Protocol = require('azure-iot-device-mqtt').Mqtt;
+//var Protocol = require('azure-iot-device-amqp').Amqp;
 
 var client = Client.fromConnectionString(settings.deviceConnectionString, Protocol);
 
@@ -32,9 +32,14 @@ client.open(function (err) {
                 }
             });
         });
+        client.onDeviceMethod('getTemperature', function(req, res){
+            res.send(200, thermometer.getTemperature(), function(err){
+                if(err)
+                    console.log(err);
+            })
+        });
         client.on('error', function (err) {
             console.error(err.message.red);
         });
-        
     }
 });
